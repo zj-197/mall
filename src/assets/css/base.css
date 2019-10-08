@@ -1,0 +1,45 @@
+@import 'normalize.css';
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    background: #fff;
+    width: 100vw;
+    color: #666;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.clear-fix::after {
+    clear: both;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.clear-fix{
+    zoom: 1;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+ul,li {
+    list-style: none;
+}
