@@ -27,7 +27,6 @@
       this.scroll = new BScroll(this.$refs.wrapper, {
         probeType: 3,
         pullUpLoad: true,
-        tap: true,
         click: true
       })
       this.scroll.on('scroll', (position) => {
@@ -44,7 +43,7 @@
       refresh(){
         this.scroll.refresh()
         console.log('refresh');
-      }
+      },
     }
   }
 

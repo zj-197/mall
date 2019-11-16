@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
-
 const cart =()=> import('./views/cart/cart.vue')
 const category =()=> import('./views/category/category.vue')
 const HOME =()=> import('./views/HOME/HOME.vue')
@@ -47,7 +46,6 @@ const rout = new Router({
   base: process.env.BASE_URL,
   routes
 })
-
 
 export default rout
 

@@ -30,7 +30,6 @@
 
 <style scoped>
   .item {
-    text-align: center;
     height: 300px;
   }
 </style>

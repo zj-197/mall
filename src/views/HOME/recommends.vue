@@ -12,40 +12,39 @@
 <script>
   export default {
     name: "",
-    data(){
-     return {
-       flag: true
-     }
+    data() {
+      return {
+        flag: true
+      }
     },
     props: {
       recommends: {
-        default(){
+        default() {
           return []
         }
       }
     },
-    methods :{
-
-    }
+    methods: {}
   }
 </script>
 
 <style scoped>
- .recommends {
-   width: 100%;
-   display: flex;
-   text-align: center;
-   padding: 5px 0 35px;
-   border-bottom: 8px solid #eee;
-   font-size: 14px;
+  .recommends {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    padding: 5px 0 35px;
+    border-bottom: 8px solid #eee;
+    font-size: 14px;
 
- }
- .recommends-item{
+  }
+
+  .recommends-item {
     flex: 1;
   }
 
- .recommends-item img{
-   width: 80px;
-   height: 80px;
- }
+  .recommends-item img {
+    width: 80px;
+    height: 80px;
+  }
 </style>

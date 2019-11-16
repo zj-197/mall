@@ -15,7 +15,6 @@
 <style scoped>
 .nav-bar{
   display: flex;
-
 }
 .left,.right{
   height:44px;

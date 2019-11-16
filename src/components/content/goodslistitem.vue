@@ -1,36 +1,55 @@
 <template>
-  <div class="goodsitem" ref="content" @click="skipdetail">
-      <img :src="goodsitem.showLarge.img" alt="why" @load="finishload">
-    <div class="goodsinfo">
-      <p>{{goodsitem.title}}</p>
-      <span class="price">{{goodsitem.price}}</span>
-      <span class="collect">
+    <div class="goodsitem" ref="content" @click="skipdetail">
+      <img :src="showimage" alt="why" @load="finishload">
+      <div class="goodsinfo">
+        <p>{{goodsitem.title}}</p>
+        <span class="price">{{goodsitem.price}}</span>
+        <span class="collect">
         {{goodsitem.cfav}}</span>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
-  import BScroll from 'better-scroll'
 
   export default {
     name: "goodslistitem",
     props: {
       goodsitem: {
-        type: Object
+        type: Object,
+        default() {
+          return {}
+        }
       }
     },
     data() {
       return {
-        scroll: null
+        scroll: null,
       }
     },
+    computed: {
+      showimage() {
+        return this.goodsitem.image || this.goodsitem.showLarge.img
+        // if(this.$router.path = this.path)
+        //   return this.goodsitem.showLarge.img
+        // else return this.goodsitem.image;
+        // return this.goodsitem.image
+      }
+
+    },
     methods: {
-      finishload(){
+      finishload() {
         this.$bus.$emit('finishimg')
       },
-      skipdetail(){
+      skipdetail() {
+
+        // let iid = this.goodsitem.iid;
+        //
+        // // 2.跳转到详情页面
+        // this.$router.push({path: '/detail', query: {iid}})
+        // path.indexOf(home) !== -1;
         this.$router.push('/detail/' + this.goodsitem.iid)
+
       }
     }
   }
@@ -69,6 +88,7 @@
     color: red;
     margin-right: 20px;
   }
+
 
   /*.goodsinfo .collect {*/
   /*  position: relative;*/

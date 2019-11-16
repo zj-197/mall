@@ -9,12 +9,12 @@
 
     <scroll class="content" ref="scroll" @scroll="contentscroll" @pullingUp="loadmore">
       <div>
-      <homeswiper  ref="hSwiper" :banners="res.banners" @finishimage="finishimage"></homeswiper>
-      <recommends :recommends="res.recommends"></recommends>
-      <popular></popular>
-      <tabcontrol :tabitem="['流行','新款','精选']" class="tabcontrol"
-                  @btnclick="btntype" ref="tabcontrol"></tabcontrol>
-      <goodslist :goodslist="goods[currentType].list"></goodslist>
+        <homeswiper ref="hSwiper" :banners="res.banners" @finishimage="finishimage"></homeswiper>
+        <recommends :recommends="res.recommends"></recommends>
+        <popular></popular>
+        <tabcontrol :tabitem="['流行','新款','精选']" class="tabcontrol"
+                    @btnclick="btntype" ref="tabcontrol"></tabcontrol>
+        <goodslist :goodslist="goods[currentType].list"></goodslist>
       </div>
     </scroll>
 
@@ -36,8 +36,6 @@
 
   import {gethomedata, gethomegoods} from "../../network/home"
   import {debounce} from "../../common/utils";
-
-
 
 
   export default {
@@ -87,8 +85,8 @@
       // console.log(this.tabOffsetTop);
     },
     mounted() {
-    const refresh = debounce(this.$refs.scroll.refresh,50)
-      this.$bus.$on('finishimg',() =>{
+      const refresh = debounce(this.$refs.scroll.refresh, 50)
+      this.$bus.$on('finishimg', () => {
         refresh();
       })
     },
@@ -125,7 +123,7 @@
         const page = this.goods[type].page + 1;
         gethomegoods(type, page)
             .then(res => {
-              // console.log(res);
+              console.log(res);
               this.goods[type].list.push(...res.data.data.list)
               this.goods[type].page += 1
               this.$refs.scroll.pullUp()
@@ -142,7 +140,7 @@
         this.isShow = (-position.y) > this.offsetTop
       },
       finishimage() {
-        this.offsetTop =  this.$refs.tabcontrol.$el.offsetTop
+        this.offsetTop = this.$refs.tabcontrol.$el.offsetTop
       }
     }
   }
@@ -177,6 +175,7 @@
     /*position: sticky; !*这个属性PC端有些浏览器不支持 但大多数移动端支持 需要设置背景颜色 该属性是透明的*!*/
     /*top: 44px; !*距离顶部多少距离开始停留*!*/
   }
+
   /* 滚动区域*/
   .content {
     position: absolute;

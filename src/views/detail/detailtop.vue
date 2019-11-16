@@ -2,13 +2,13 @@
   <div>
     <navbar>
       <div slot="center" class="title">
-        <div v-for="(item,index) in title"
+        <div v-for="(item,index) in title" :key="index"
              class="titleitem"
-             @click="btnitem(index)"
-             :class="{active: index === currentIndex}">
-          {{item}}
+             :class="{'active': index===currentIndex}" @click="skipPosition(index)">
+         <span>{{item}}</span>
         </div>
       </div>
+      <img slot="left" class="backButton" src="~assets/images/common/back.svg" @click="backHome">
     </navbar>
   </div>
 </template>
@@ -27,10 +27,17 @@
     components: {
       navbar
     },
+
     methods: {
-      btnitem(index) {
-       this.currentIndex = index
-      }
+      skipPosition(index) {
+        // console.log(index);
+        this.$emit('skipposition',index)
+        console.log(this.currentIndex)
+      },
+      backHome(){
+        this.$router.back()
+      },
+
     }
   }
 </script>
@@ -38,15 +45,22 @@
 <style scoped>
   .title {
     display: flex;
-    margin-top: 20px;
+    margin-top: 11px;
   }
 
   .titleitem {
     flex: 1;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
   }
   .active{
    color: red;
+  }
+  .backButton {
+    width: 28px;
+    height: 28px;
+    position: fixed;
+    left: 5px;
+    top:8px;
   }
 </style>
